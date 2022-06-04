@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #dfdfdf;
+	font-family: 'Play', sans-serif;
+}
+
+/* HEADER */
+.header-wrapper {
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(-45deg, #1145aa ,#2193b0, #3db2c2 ,#6dd5ed);
+	background-size: 400% 400%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	animation: backgroundTransition 8s ease-in-out infinite;
+}
+
+h1 {
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+
+h2 {
+	text-transform: uppercase;
+	display: 4px;
+}
+
+.social-media {
+	margin-top: 1rem;
+	display: flex;
+}
+
+.social-media a {
+	text-decoration: none;
+	color: #dfdfdf;
+	font-size: 24px;
+	padding: 1rem 4rem;
+	border: 1px solid #dfdfdf;
+	min-width: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .5s cubic-bezier(0.55, 0.025, 0.675, 0.97);
+}
+
+a:hover {
+	letter-spacing: 4px;
+	font-weight: bold;
+	color: black;
+	background: #efefef;
+}
+
+@keyframes backgroundTransition {
+	0% {
+		background-position: 0% 80%;
+	}
+	50% {
+		background-position: 80% 100%;
+	}
+	100% {
+		background-position: 0% 90%;
+	}
+}
+
+/* MENU HAMBURGUER */
+.checkbox-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.checkbox {
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 9999; /* Na frente de tudo no eixo z (sai da tela) */
+	transition: 400ms ease-in-out 0s;
+}
+
+.checkbox .trace {
+	width: 40px;
+	height: 5px;
+	background-color: #dfdfdf;
+	position: absolute;
+	border-radius: 4px;
+	transition: 0.5s ease-in-out;
+}
+
+/* Estado inicial */
+.checkbox .trace:nth-child(1) {
+	top: 26px;
+	transform: rotate(0);
+}
+.checkbox .trace:nth-child(2) {
+	top: 46px;
+	transform: rotate(0);
+}
+.checkbox .trace:nth-child(3) {
+	top: 66px;
+	transition: rotate(0);
+}
+
+#toggle {
+	display: none;
+}
+
+/* MENU - Nav */
+.menu {
+	position: absolute;
+	top: 28px;
+	right: 30px;
+	background: transparent;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 0px 0px #dfdfdf;
+	z-index: -1; /* Por trás de tudo */
+	transition: 400ms ease-in-out 0s;
+}
+
+.menu-items {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+	transition: 400ms ease-in-out 0s;
+}
+
+.menu-items ul {
+	list-style-type: none;
+}
+
+.menu-items ul li a {
+	margin: 10px 0;
+	color: black;
+	text-decoration: none;
+	font-size: 35px;
+	min-width: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .5s cubic-bezier(0.55, 0.025, 0.675, 0.97);
+}
+.menu-items ul li a:hover {
+	letter-spacing: 4px;
+	background-color: #dfdfdf;
+	border: none;
+	font-weight: bold;
+}
+
+/* ANIMAÇÃO MENU */
+#toggle:checked + .checkbox .trace:nth-child(1) {
+	transform: rotate(45deg);
+	background-color: black;
+	top: 47px;
+}
+#toggle:checked + .checkbox .trace:nth-child(2) {
+	transform: translateX(-100px);
+	width: 30px;
+	visibility: hidden;
+	opacity: 0;
+}
+#toggle:checked + .checkbox .trace:nth-child(3) {
+	transform: rotate(-45deg);
+	background-color: black;
+	top: 48px;
+}
+
+/* ANIMAÇÂO MENU BOLHA */
+#toggle:checked + .checkbox {
+	background-color: #dfdfdf;
+}
+#toggle:checked ~ .menu {
+	box-shadow: 0px 0px 0px 100vmax #dfdfdf;
+	z-index: 1;
+}
+#toggle:checked ~ .menu-items {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* MAIN */
+	/* CARDS */
+.container {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 3rem 0;
+}
+
+.card-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 90%;
+}
+
+/*
+#c1 {
+	background-image: url('./imgs/github.jpg');
+}
+#c2 {
+	background-image: url('./imgs/linkedin.png');
+}
+#c3 {
+	background-image: url('./imgs/insta.jpg');
+}*/
+.card {
+	height: 300px;
+	width: 400px;
+	margin: 3rem 0 0 0;
+	border: 5px solid rgba(20, 20, 20, 0.6);
+	border-radius: 4px;
+	background-image: url('./imgs/img01.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	filter: grayscale(0.6);
+	color: #dfdfdf;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.card-text {
+	width: 40%;
+	font-family: sans-serif;
+	letter-spacing: 1px;
+	color: rgb(109, 109, 109);
+	text-align:  justify;
+}
+
+.card-wrapper {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+/* ANIMAÇÃO CARDS */
+.card-wrapper::before {
+	content: '';
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	display: block;
+	border: 1px solid #dfdfdf;
+	border-radius: 4px;
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.card-wrapper h2 {
+	font-size: 40px;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 0;
+	transition: 0.3s;
+}
+
+.card-wrapper p {
+	font-size: 0;
+	visibility: hidden;
+	opacity: 0;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+
+	/* HOVERS */
+.card:hover {
+	filter: unset;
+}
+
+.card:hover > .card-wrapper::before {
+	opacity: 1;
+	width: 360px;
+	height: 250px;
+}
+
+.card:hover > .card-wrapper p {
+	font-size: 14px;
+	opacity: 1;
+	visibility: visible;
+}
+
+.card:hover > .card-wrapper h2 {
+	font-weight: bold;
+	letter-spacing: 4px;
+}
+
+/* FOOTER */
+.footer {
+	height: 100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #3db2c2;
+	color: #dfdfdf;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 800px) {
+	.social-media {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.container {
+		margin-top: 0;
+	}
+
+	.card-container {
+		flex-direction: column;
+	}
+
+	.container .card-container:nth-child(1),
+	.container .card-container:nth-child(3) {
+		flex-direction: column-reverse;
+	}
+
+	.card {
+		height: 250px;
+		width: 250px;
+	}
+
+	.card-text {
+		width: 90%;
+		margin-top: 2rem;
+		text-align: center;
+	}
+
+	.card:hover > .card-wrapper::before {
+		height: 190px;
+		width: 190px;
+	}
+}
